@@ -2,6 +2,7 @@
 @import "variables";
 
 header {
+    user-select: none;
     background-color: $color-primary;
     text-align: center;
     padding: 2rem;

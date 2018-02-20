@@ -18,10 +18,12 @@ main {
                         background-color: $white;
                         color: $color-primary;
                     }
-                    p {
-                        small {
-                            color: $text-color;
-                        }
+                }
+
+                p {
+                    .install {
+                        color: $text-color;
+                        font-weight: 600;
                     }
                 }
             }

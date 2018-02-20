@@ -10,7 +10,7 @@
   </head>
   <body>
    <header>
-      <h3>Gulp Setup Environment</h3>
+      <h3 id="title"></h3>
    </header>
 
    <main class="grid-container">
@@ -18,15 +18,22 @@
         <ul class="vertical menu">
           <li>
             <a href="https://www.npmjs.com/package/gulp-sass/" target="_blank">Gulp Sass</a>
-            <p class="grid-container">
-               <small> npm install gulp-sass --save-dev</small>
+            <p>
+               <small class="install"> $ npm install gulp-sass --save-dev</small>
             </p>
           </li>
 
           <li>
             <a href="https://www.npmjs.com/package/gulp-concat/" target="_blank">Gulp Concat</a>
-            <p class="grid-container">
-               <small> npm install gulp-concat --save-dev</small>
+            <p>
+               <small class="install"> $ npm install gulp-concat --save-dev</small>
+            </p>
+          </li>
+
+          <li>
+            <a href="https://www.npmjs.com/package/gulp-uglify/" target="_blank">Gulp Uglify</a>
+            <p>
+               <small class="install"> $ npm install gulp-uglify --save-dev</small>
             </p>
           </li>
         </ul>
@@ -36,6 +43,7 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/what-input/dist/what-input.min.js"></script>
     <script src="node_modules/foundation-sites/dist/js/foundation.min.js"></script>
+    <script src="assets/js/app.min.js"></script>
     <script>
       $(document).foundation();
     </script>
