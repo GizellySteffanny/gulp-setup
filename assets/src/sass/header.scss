@@ -3,6 +3,7 @@
 
 header {
     user-select: none;
+    -webkit-user-select: none;
     background-color: $color-primary;
     text-align: center;
     padding: 2rem;
