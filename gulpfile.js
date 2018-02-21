@@ -9,7 +9,7 @@ var
 
 
 // run all tasks
-gulp.task('default', ['html', 'sass', 'js', 'image', 'watch']);
+gulp.task('default', ['html', 'sass', 'js', 'image', 'watch', 'server']);
 
 // compile, concat and compress css files
 gulp.task('sass', function () {
@@ -59,8 +59,21 @@ gulp.task('watch', function() {
     gulp.watch('assets/src/images/*', ['image']);
 });
 
-// Server -> gulp server
+// Server & setup livereload
 gulp.task('server', function () {
     var server = gls.static('./', 8000);
     server.start();
+
+    gulp.watch('assets/css/**/*.css', function (file) {
+        gls.notify.apply(server, [file]);
+    });
+    gulp.watch('assets/js/**/*.js', function (file) {
+        gls.notify.apply(server, [file]);
+    });
+    gulp.watch('assets/image/**/*', function (file) {
+        gls.notify.apply(server, [file]);
+    });
+    gulp.watch('./*.html', function (file) {
+        gls.notify.apply(server, [file]);
+    });
 });
