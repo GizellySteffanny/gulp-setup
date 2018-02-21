@@ -4,7 +4,8 @@ var
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
     imagemin = require('gulp-imagemin'),
-    htmlmin = require('gulp-htmlmin');
+    htmlmin = require('gulp-htmlmin'),
+    gls = require('gulp-live-server');
 
 
 // run all tasks
@@ -56,4 +57,10 @@ gulp.task('watch', function() {
     gulp.watch('assets/src/sass/**/*.scss', ['sass']);
     gulp.watch('assets/src/js/**/*.js', ['js']);
     gulp.watch('assets/src/images/*', ['image']);
+});
+
+// Server -> gulp server
+gulp.task('server', function () {
+    var server = gls.static('./', 8000);
+    server.start();
 });
