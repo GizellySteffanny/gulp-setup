@@ -3,14 +3,14 @@ var
     sass = require('gulp-sass'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
-    imagemin = require('gulp-imagemin');
-    //pngquant = require('imagemin-quant');
+    imagemin = require('gulp-imagemin'),
+    htmlmin = require('gulp-htmlmin');
 
 
 // run all tasks
-gulp.task('default', ['sass', 'js', 'image']);
+gulp.task('default', ['html', 'sass', 'js', 'image', 'watch']);
 
-// compile, concat and  compress css files
+// compile, concat and compress css files
 gulp.task('sass', function () {
     return gulp.src('assets/src/sass/**/*.scss')
         .pipe(concat ('style.min.css'))
@@ -18,7 +18,7 @@ gulp.task('sass', function () {
         .pipe( gulp.dest('assets/css'));
 });
 
-// concat and compress
+// concat and compress js files
 gulp.task('js', function () {
     return gulp.src('assets/src/js/**/*.js')
     .pipe(concat ('app.min.js'))
@@ -32,7 +32,7 @@ gulp.task('image', function () {
     .pipe(imagemin([
         imagemin.gifsicle({interlaced: true}),
         imagemin.jpegtran({progressive: true}),
-        imagemin.optipng({optimizationLevel: 5}),
+        imagemin.optipng({optimizationLevel: 6}),
         imagemin.svgo({
             plugins: [
                 {removeViewBox: true},
@@ -41,4 +41,19 @@ gulp.task('image', function () {
         })
     ]))
     .pipe( gulp.dest('assets/images'));
+});
+
+// minify html
+gulp.task('html', function() {
+    return gulp.src('_html/**/*.html')
+      .pipe(htmlmin({collapseWhitespace: true}))
+      .pipe(gulp.dest('.'));
+});
+
+// Setting up the Watch
+gulp.task('watch', function() {
+    gulp.watch('_html/**/*.html', ['html']);
+    gulp.watch('assets/src/sass/**/*.scss', ['sass']);
+    gulp.watch('assets/src/js/**/*.js', ['js']);
+    gulp.watch('assets/src/images/*', ['image']);
 });
